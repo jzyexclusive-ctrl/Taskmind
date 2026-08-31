@@ -15,11 +15,11 @@ const router = Router();
 router.use(requireAuth);
 
 // Routes
-router.get('/', validate(taskQuerySchema), TaskController.getTasks);
-router.post('/', validate(createTaskSchema), TaskController.createTask);
-router.get('/:id', validate(getTaskParamsSchema), TaskController.getTaskById);
-router.put('/:id', validate(updateTaskSchema), TaskController.updateTask);
-router.patch('/:id/status', validate(getTaskParamsSchema), TaskController.updateStatus);
-router.delete('/:id', validate(getTaskParamsSchema), TaskController.deleteTask);
+router.get('/', validate({ query: taskQuerySchema }), TaskController.getTasks);
+router.post('/', validate({ body: createTaskSchema }), TaskController.createTask);
+router.get('/:id', validate({ params: getTaskParamsSchema }), TaskController.getTaskById);
+router.put('/:id', validate({ body: updateTaskSchema }), TaskController.updateTask);
+router.patch('/:id/status', validate({ params: getTaskParamsSchema }), TaskController.updateStatus);
+router.delete('/:id', validate({ params: getTaskParamsSchema }), TaskController.deleteTask);
 
 export default router;

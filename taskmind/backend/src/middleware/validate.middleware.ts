@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-import { ZodError, ZodSchema } from 'zod';
+import { ZodError, AnyZodObject } from 'zod';
 import { ApiResponse } from '../utils/response.js';
 
 export const validate = (schema: {
-  body?: ZodSchema<any>;
-  query?: ZodSchema<any>;
-  params?: ZodSchema<any>;
+  body?: AnyZodObject;
+  query?: AnyZodObject;
+  params?: AnyZodObject;
 }) => {
   return (req: Request, res: Response, next: NextFunction): void => {
     try {
